@@ -16,19 +16,23 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:id="@+id/button_1"
+            android:onClick="setSymbol" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:id="@+id/button_2" />
+            android:id="@+id/button_2"
+            android:onClick="setSymbol"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:id="@+id/button_3" />
+            android:id="@+id/button_3"
+            android:onClick="setSymbol"/>
 
     </LinearLayout>
 
@@ -43,19 +47,22 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:id="@+id/button_4" />
+            android:id="@+id/button_4"
+            android:onClick="setSymbol" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:id="@+id/button_5" />
+            android:id="@+id/button_5"
+            android:onClick="setSymbol"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:id="@+id/button_6" />
+            android:id="@+id/button_6"
+            android:onClick="setSymbol"/>
 
     </LinearLayout>
 
@@ -70,19 +77,22 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:id="@+id/button_7" />
+            android:id="@+id/button_7"
+            android:onClick="setSymbol"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:id="@+id/button_8" />
+            android:id="@+id/button_8"
+            android:onClick="setSymbol"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:id="@+id/button_9" />
+            android:id="@+id/button_9"
+            android:onClick="setSymbol"/>
 
     </LinearLayout>
 
