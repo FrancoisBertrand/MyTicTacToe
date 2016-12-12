@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,11 +30,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         gameboard = new Gameboard();
         counter = 0;
+
+
     }
 
     public void resetClick(View view){
         reset();
     }
+    
 
     public void setSymbol(View view){
         Button butt = (Button)findViewById(view.getId());
