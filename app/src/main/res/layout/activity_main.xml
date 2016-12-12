@@ -116,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:text="@string/O"
-                android:onClick="onRadioButtonClicked"
+                android:onClick="onRadioButtonChanged"
                 android:clickable="false"
                 android:textColor="#f5f5f5"/>
 
@@ -124,14 +124,25 @@
                 android:id="@+id/radio_X"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
+                android:checked="false"
                 android:text="@string/X"
-                android:onClick="onRadioButtonClicked"
+                android:onClick="onRadioButtonChanged"
                 android:clickable="false"
                 android:textColor="#f5f5f5"/>
 
         </RadioGroup>
 
+<!--
+        <TextView
+            android:id="@+id/spieler"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/spieler"
+            android:textColor="#f5f5f5"
+            android:textSize="20sp"
+            android:gravity="center" />
+-->
         <TextView
             android:id="@+id/reset"
             android:layout_width="0dp"

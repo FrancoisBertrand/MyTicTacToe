@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
     private String spielerX = "X";
     private String spielerO = "O";
     private boolean spielende = false;
-
+    private RadioButton radioButtonO;
+    private RadioButton radioButtonX;
 
 
 
@@ -30,14 +31,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         gameboard = new Gameboard();
         counter = 0;
-
-
+        radioButtonO = (RadioButton)findViewById(R.id.radio_O);
+        radioButtonX = (RadioButton)findViewById(R.id.radio_X);
     }
 
     public void resetClick(View view){
         reset();
     }
-    
+
+    public void onRadioButtonChanged(View view){
+        if(counter%2 == 1){
+            radioButtonO.setChecked(true);
+        }else{
+            radioButtonX.setChecked(true);
+        }
+    }
+
 
     public void setSymbol(View view){
         Button butt = (Button)findViewById(view.getId());
@@ -86,9 +95,11 @@ public class MainActivity extends AppCompatActivity {
             if(counter % 2 == 1){
                 gameboard.setzeZeichen(xPosition,yPosition,spielerX);
                 butt.setText(spielerX);
+                onRadioButtonChanged(view);
             }else{
                 gameboard.setzeZeichen(xPosition,yPosition,spielerO);
                 butt.setText(spielerO);
+                onRadioButtonChanged(view);
             }
 
             spielende = pruefeEnde();
@@ -100,6 +111,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
+
+
 
     private boolean pruefeEnde(){
         if(gameboard.isWinner() && counter%2 == 1){
@@ -141,7 +156,10 @@ public class MainActivity extends AppCompatActivity {
         }
         spielende = false;
         counter = 0;
+        radioButtonO.setChecked(true);
+        radioButtonX.setChecked(false);
         gameboard.clear();
+
     }
 
 
