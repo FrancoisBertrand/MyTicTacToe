@@ -6,7 +6,7 @@ import android.app.Activity;
  * Created by Francois on 12/12/2016.
  */
 
-public class Gameboard extends Activity{
+public class Gameboard {
 
     // Spielfeld auf 3x3 festgelegt
     private String[][] board = new String[3][3];
