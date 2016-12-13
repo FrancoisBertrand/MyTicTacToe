@@ -38,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
         radioButtonX.setChecked(false);
     }
 
+    /**
+     * Aufruf der Reset methode
+     * @param view
+     */
     public void resetClick(View view){
         reset();
     }
@@ -57,9 +61,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
-
+    /**
+     * Setzt je nachdem welcher Spieler am Zug ist, das entsprechende Zeichen an der gewaehlten Position
+     * @param view
+     */
     public void setSymbol(View view){
         Button butt = (Button)findViewById(view.getId());
 
@@ -107,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
             if(counter % 2 == 1){
                 gameboard.setzeZeichen(xPosition,yPosition,spielerX);
                 butt.setText(spielerX);
-
                 onRadioButtonChanged(view);
             }else{
                 gameboard.setzeZeichen(xPosition,yPosition,spielerO);
@@ -125,10 +129,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
+    /**
+     * Ueberprueft, ob das Spiel zu ende ist
+     * @return
+     */
     private boolean pruefeEnde(){
         if(gameboard.isWinner() && counter%2 == 1){
             ermittleGewinner(true, spielerX);
@@ -137,21 +141,26 @@ public class MainActivity extends AppCompatActivity {
         else if(gameboard.isWinner() && counter%2 == 0){
             ermittleGewinner(true,spielerO);
             return true;
-        }else if(counter >= 9){
-            ermittleGewinner(false, "");
+        }else if(counter >= 8){
+            ermittleGewinner(false, spielerX);
             return true;
         }
 
         return false;
     }
 
+    /**
+     * Ermittelt, welcher spieler gewonnen hat oder ob ein Unendschieden vorliegt
+     * @param status
+     * @param spieler
+     */
     private void ermittleGewinner(boolean status, String spieler){
         if(status == true && counter %2 == 1){
             spieler = spieler + " hat Gewonnen!";
         }else if(status == true && counter%2 == 0){
             spieler = spieler + " hat Gewonnen!";
-        }else{
-            spieler = spieler + "Uendschieden";
+        }else if(status == false){
+            spieler = "Uendschieden";
         }
 
         Context context = getApplicationContext();
@@ -160,6 +169,10 @@ public class MainActivity extends AppCompatActivity {
         toast.show();
     }
 
+    /**
+     * Leert das Spielfeld fuer eine neue Runde
+     * Setzt alle noetigen Parameter auf den Ursprung
+     */
     private void reset(){
         int[] idList = {R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4, R.id.button_5, R.id.button_6, R.id.button_7, R.id.button_8, R.id.button_9,};
 
