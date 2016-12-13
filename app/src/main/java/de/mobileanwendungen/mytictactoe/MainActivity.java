@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -33,19 +34,30 @@ public class MainActivity extends AppCompatActivity {
         counter = 0;
         radioButtonO = (RadioButton)findViewById(R.id.radio_O);
         radioButtonX = (RadioButton)findViewById(R.id.radio_X);
+        radioButtonO.setChecked(true);
+        radioButtonX.setChecked(false);
     }
 
     public void resetClick(View view){
         reset();
     }
 
+    /**
+     * Wechselt zwischen den RadioButtons, je nachdem welcher Spieler am Zug ist.
+     * @param view
+     */
     public void onRadioButtonChanged(View view){
-        if(counter%2 == 1){
+
+
+        if(counter%2 == 1 ){
             radioButtonO.setChecked(true);
-        }else{
+
+        }else if(counter%2 == 0){
             radioButtonX.setChecked(true);
         }
     }
+
+
 
 
     public void setSymbol(View view){
@@ -95,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
             if(counter % 2 == 1){
                 gameboard.setzeZeichen(xPosition,yPosition,spielerX);
                 butt.setText(spielerX);
+
                 onRadioButtonChanged(view);
             }else{
                 gameboard.setzeZeichen(xPosition,yPosition,spielerO);
@@ -143,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
 
         Context context = getApplicationContext();
         Toast toast = Toast.makeText(context,spieler, Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER|Gravity.CENTER,0,0);
         toast.show();
     }
 
