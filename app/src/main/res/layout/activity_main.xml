@@ -129,6 +129,7 @@
                 android:text="@string/O"
                 android:onClick="onRadioButtonChanged"
                 android:clickable="false"
+                android:enabled="false"
                 android:textColor="#f5f5f5"/>
 
             <RadioButton
@@ -139,7 +140,8 @@
                 android:text="@string/X"
                 android:onClick="onRadioButtonChanged"
                 android:clickable="false"
-                android:textColor="#f5f5f5"/>
+                android:enabled="false"
+                android:textColor="#f5f5f5" />
 
         </RadioGroup>
 
