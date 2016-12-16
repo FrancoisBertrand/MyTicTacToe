@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton radioButtonX;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void onRadioButtonChanged(View view){
-
-
         if(counter%2 == 1 ){
             radioButtonO.setChecked(true);
 
@@ -60,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             radioButtonX.setChecked(true);
         }
     }
+
 
     /**
      * Setzt je nachdem welcher Spieler am Zug ist, das entsprechende Zeichen an der gewaehlten Position
