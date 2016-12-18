@@ -130,7 +130,7 @@
                 android:onClick="onRadioButtonChanged"
                 android:clickable="false"
                 android:enabled="false"
-                android:textColor="#f5f5f5"/>
+                android:textColor="#f5f5f5" />
 
             <RadioButton
                 android:id="@+id/radio_X"

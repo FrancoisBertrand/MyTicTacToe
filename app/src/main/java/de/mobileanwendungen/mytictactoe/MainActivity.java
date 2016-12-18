@@ -35,7 +35,9 @@ public class MainActivity extends AppCompatActivity {
         radioButtonX = (RadioButton)findViewById(R.id.radio_X);
         radioButtonO.setChecked(true);
         radioButtonX.setChecked(false);
+
     }
+
 
     /**
      * Aufruf der Reset methode
@@ -52,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
     public void onRadioButtonChanged(View view){
         if(counter%2 == 1 ){
             radioButtonO.setChecked(true);
-
-        }else if(counter%2 == 0){
+        }
+        else if(counter%2 == 0){
             radioButtonX.setChecked(true);
         }
     }
@@ -111,7 +113,8 @@ public class MainActivity extends AppCompatActivity {
                 gameboard.setzeZeichen(xPosition,yPosition,spielerX);
                 butt.setText(spielerX);
                 onRadioButtonChanged(view);
-            }else{
+            }
+            else{
                 gameboard.setzeZeichen(xPosition,yPosition,spielerO);
                 butt.setText(spielerO);
                 onRadioButtonChanged(view);
@@ -139,7 +142,8 @@ public class MainActivity extends AppCompatActivity {
         else if(gameboard.isWinner() && counter%2 == 0){
             ermittleGewinner(true,spielerO);
             return true;
-        }else if(counter >= 8){
+        }
+        else if(counter >= 8){
             ermittleGewinner(false, spielerX);
             return true;
         }
@@ -155,9 +159,11 @@ public class MainActivity extends AppCompatActivity {
     private void ermittleGewinner(boolean status, String spieler){
         if(status == true && counter %2 == 1){
             spieler = spieler + " hat Gewonnen!";
-        }else if(status == true && counter%2 == 0){
+        }
+        else if(status == true && counter%2 == 0){
             spieler = spieler + " hat Gewonnen!";
-        }else if(status == false){
+        }
+        else if(status == false){
             spieler = "Uendschieden";
         }
 
