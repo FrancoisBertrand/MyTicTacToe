@@ -64,26 +64,24 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             client = new Socket("192.168.2.113", 60123);
-            PrintWriter out1 = new PrintWriter(client.getOutputStream(), true);
-            PrintWriter out2 = new PrintWriter(client.getOutputStream(), true);
-            PrintWriter out3 = new PrintWriter(client.getOutputStream(), true);
-            PrintWriter out4 = new PrintWriter(client.getOutputStream(), true);
+            PrintWriter out = new PrintWriter(client.getOutputStream(), true);
+
 
             System.out.println("server gefunden :)");
-            out1.println(unentschieden);
-            out1.flush();
+            out.println(unentschieden);
+            out.flush();
 
 
-            out2.println(winX);
-            out2.flush();
+            out.println(winX);
+            out.flush();
 
 
-            out3.println(winO);
-            out3.flush();
+            out.println(winO);
+            out.flush();
 
 
-            out4.println(gamecounter);
-            out4.flush();
+            out.println(gamecounter);
+            out.flush();
 
 
            /*InputStreamReader input1 = new InputStreamReader(client.getInputStream());
@@ -115,12 +113,6 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(winO);
         System.out.println(winX);
         System.out.println(gamecounter);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                tcp();
-            }
-        }).start();
         reset();
     }
 
@@ -248,16 +240,34 @@ public class MainActivity extends AppCompatActivity {
             spieler = spieler + " hat Gewonnen!";
             winX++;
             gamecounter++;
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    tcp();
+                }
+            }).start();
         }
         else if(status == true && counter%2 == 0){
             spieler = spieler + " hat Gewonnen!";
             winO++;
             gamecounter++;
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    tcp();
+                }
+            }).start();
         }
         else if(status == false){
             spieler = "Uendschieden";
             unentschieden++;
             gamecounter++;
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    tcp();
+                }
+            }).start();
         }
 
         Context context = getApplicationContext();
