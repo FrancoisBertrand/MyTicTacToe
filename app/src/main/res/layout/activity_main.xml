@@ -166,8 +166,8 @@
             android:textColor="#f5f5f5"
             android:textSize="20sp"
             android:gravity="center"
-            android:clickable="false" />
-           <!-- android:onClick="statistikClick" -->
+            android:clickable="true"
+            android:onClick="statistikClick" />
 
 
     </LinearLayout>

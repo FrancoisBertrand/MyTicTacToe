@@ -5,4 +5,10 @@
     <string name="X">X</string>
     <string name="statistik">Statistik</string>
     <string name="spieler">O ist am Zug</string>
+    <string name="gesamt">Gesamtspiele: </string>
+    <string name="unentschieden">Unentschieden: </string>
+    <string name="xWin">Gewonnene Spiele X: </string>
+    <string name="oWin">Gewonnene Spiele O: </string>
+    <string name="speichern">Spielstand speichern</string>
+    <string name="laden">Spielstand laden</string>
 </resources>

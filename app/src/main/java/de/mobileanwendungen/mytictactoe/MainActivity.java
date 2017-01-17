@@ -1,6 +1,7 @@
 package de.mobileanwendungen.mytictactoe;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,14 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
     private boolean spielende = false;
     private RadioButton radioButtonO;
     private RadioButton radioButtonX;
+    private int gamecounter = 0;
+    private int unentschieden = 0;
+    private int winX = 0;
+    private int winO = 0;
+    Socket client;
 
 
     @Override
@@ -35,7 +49,60 @@ public class MainActivity extends AppCompatActivity {
         radioButtonX = (RadioButton)findViewById(R.id.radio_X);
         radioButtonO.setChecked(true);
         radioButtonX.setChecked(false);
+        System.out.println(gamecounter);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                tcp();
+            }
+        }).start();
 
+    }
+
+    public void tcp(){
+        //Socket client;
+
+        try {
+            client = new Socket("192.168.2.113", 60123);
+            PrintWriter out1 = new PrintWriter(client.getOutputStream(), true);
+            PrintWriter out2 = new PrintWriter(client.getOutputStream(), true);
+            PrintWriter out3 = new PrintWriter(client.getOutputStream(), true);
+            PrintWriter out4 = new PrintWriter(client.getOutputStream(), true);
+
+            System.out.println("server gefunden :)");
+            out1.println(unentschieden);
+            out1.flush();
+
+
+            out2.println(winX);
+            out2.flush();
+
+
+            out3.println(winO);
+            out3.flush();
+
+
+            out4.println(gamecounter);
+            out4.flush();
+
+
+           /*InputStreamReader input1 = new InputStreamReader(client.getInputStream());
+
+            BufferedReader in1 = new BufferedReader(input1);
+
+
+            String s1 = in1.readLine();
+            System.out.println("vom Server " + s1);
+           */
+        }
+        catch (UnknownHostException e){
+            System.out.println("Unknown Error");
+            e.printStackTrace();
+        }
+        catch (IOException e){
+            System.out.println("IO Error");
+            e.printStackTrace();
+        }
     }
 
 
@@ -44,7 +111,26 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void resetClick(View view){
+        System.out.println(unentschieden);
+        System.out.println(winO);
+        System.out.println(winX);
+        System.out.println(gamecounter);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                tcp();
+            }
+        }).start();
         reset();
+    }
+
+    public void statistikClick(View view){
+        Intent spielStaende = new Intent(MainActivity.this, StatistikActivity.class);
+        spielStaende.putExtra("gesamt", gamecounter);
+        spielStaende.putExtra("xWin", winX);
+        spielStaende.putExtra("oWin", winO);
+        spielStaende.putExtra("unentschieden", unentschieden);
+        startActivity(spielStaende);
     }
 
     /**
@@ -59,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
             radioButtonX.setChecked(true);
         }
     }
+
 
 
     /**
@@ -159,12 +246,18 @@ public class MainActivity extends AppCompatActivity {
     private void ermittleGewinner(boolean status, String spieler){
         if(status == true && counter %2 == 1){
             spieler = spieler + " hat Gewonnen!";
+            winX++;
+            gamecounter++;
         }
         else if(status == true && counter%2 == 0){
             spieler = spieler + " hat Gewonnen!";
+            winO++;
+            gamecounter++;
         }
         else if(status == false){
             spieler = "Uendschieden";
+            unentschieden++;
+            gamecounter++;
         }
 
         Context context = getApplicationContext();
